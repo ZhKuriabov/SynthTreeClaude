@@ -1,0 +1,8 @@
+dataset,task,method_family,model,score_mean,score_sd
+Servo,regression,black_box,GB,0.43571275140441135,0.11219942819939864
+Servo,regression,black_box,LRF,0.42889570322521225,0.11856824824820085
+Servo,regression,black_box,MLP,0.7210168967397749,0.16914854398915619
+Servo,regression,black_box,RF,0.41602437839828255,0.10740578361757615
+Servo,regression,explainable,CART,0.34368022556416084,0.11261456275714636
+Servo,regression,explainable,LR,1.0603780198945343,0.1263452032307969
+Servo,regression,explainable,LRT,1.03565082303652,0.13026468485530524
