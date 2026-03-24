@@ -26,8 +26,20 @@ def _extract_coef_abs(model, n_features: int) -> np.ndarray:
     params = np.asarray(inner.params, dtype=float)
     if params.size <= 1:
         return coef_abs
-    coef = np.abs(params[1 : 1 + n_features])
-    coef_abs[: coef.size] = coef
+    col_mask = getattr(model, "_col_mask", None)
+    if col_mask is not None:
+        # Map reduced params back to full feature space.
+        # col_mask[0] is intercept; col_mask[1:] are features.
+        feature_mask = col_mask[1:]  # skip intercept position
+        reduced_coef = np.abs(params[1:])  # skip intercept value
+        j = 0
+        for i in range(min(len(feature_mask), n_features)):
+            if feature_mask[i] and j < len(reduced_coef):
+                coef_abs[i] = reduced_coef[j]
+                j += 1
+    else:
+        coef = np.abs(params[1 : 1 + n_features])
+        coef_abs[: coef.size] = coef
     return coef_abs
 
 

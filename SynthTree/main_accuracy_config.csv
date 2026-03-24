@@ -1,2 +1,2 @@
 tune_black_box_teachers,tune_cart,tune_lr,synthtree_n_cells_selection,cosup_baseline_n_cells_selection,n_cells_grid,num_aug,cv_folds,mlm_epic_grid,local_model_max_iter,random_state
-True,True,True,validation_mlm,validation_mlm,"(5, 10)",100,10,"(2, 3, 4, 5, 6)",1000,0
+True,True,True,validation_mlm,validation_mlm,"(5, 10, 15)",100,10,"(2, 3, 4, 5, 6)",1000,0
