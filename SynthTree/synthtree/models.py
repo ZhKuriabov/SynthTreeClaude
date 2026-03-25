@@ -28,7 +28,10 @@ def _nondegenerate_columns(X: np.ndarray) -> np.ndarray:
     diag_abs = np.abs(np.diag(R))
     tol = max(n, kept_idx.size) * np.finfo(float).eps * (diag_abs[0] if diag_abs[0] > 0 else 1.0)
     for i, j in enumerate(kept_idx):
-        if diag_abs[i] < tol:
+        if i >= diag_abs.size:
+            # More columns than rows: columns beyond rank are degenerate
+            keep[j] = False
+        elif diag_abs[i] < tol:
             keep[j] = False
     return keep
 
