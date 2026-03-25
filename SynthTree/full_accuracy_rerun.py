@@ -655,14 +655,27 @@ def main():
             print(f"{dataset_name} | seed={seed} | rows={len(rows)}")
 
     results = pd.DataFrame(all_rows)
-    results.to_csv("main_accuracy_results.csv", index=False)
 
+    # Use dataset-specific filenames when running a single dataset
+    if len(args.datasets) == 1:
+        tag = args.datasets[0].replace(" ", "_")
+        results_file = f"main_accuracy_results_{tag}.csv"
+        baseline_file = f"main_accuracy_baseline_{tag}.csv"
+        cosup_file = f"main_accuracy_cosup_{tag}.csv"
+        config_file = f"main_accuracy_config_{tag}.csv"
+    else:
+        results_file = "main_accuracy_results.csv"
+        baseline_file = "main_accuracy_baseline_summary.csv"
+        cosup_file = "main_accuracy_cosup_summary.csv"
+        config_file = "main_accuracy_config.csv"
+
+    results.to_csv(results_file, index=False)
     baseline_summary, cosup_summary = summarize_results(results)
-    baseline_summary.to_csv("main_accuracy_baseline_summary.csv", index=False)
-    cosup_summary.to_csv("main_accuracy_cosup_summary.csv", index=False)
+    baseline_summary.to_csv(baseline_file, index=False)
+    cosup_summary.to_csv(cosup_file, index=False)
     save_table_views(results)
 
-    pd.DataFrame([asdict(cfg)]).to_csv("main_accuracy_config.csv", index=False)
+    pd.DataFrame([asdict(base_cfg)]).to_csv(config_file, index=False)
     print(baseline_summary)
     print(cosup_summary)
 
