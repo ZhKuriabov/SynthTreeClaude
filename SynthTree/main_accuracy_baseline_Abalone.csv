@@ -1,0 +1,8 @@
+dataset,task,method_family,model,score_mean,score_sd
+Abalone,regression,black_box,GB,2.1774001424377083,0.06824893470708117
+Abalone,regression,black_box,LRF,2.15828053855268,0.08241856975740858
+Abalone,regression,black_box,MLP,2.1531394859784134,0.10464208766736026
+Abalone,regression,black_box,RF,2.1632724114823425,0.08224684282296689
+Abalone,regression,explainable,CART,2.377666457434736,0.10977913231859313
+Abalone,regression,explainable,LR,2.231076958683232,0.09623027196360079
+Abalone,regression,explainable,LRT,2.4780992490482054,0.07289091548151636

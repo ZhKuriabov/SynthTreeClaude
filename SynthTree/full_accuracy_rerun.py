@@ -67,7 +67,7 @@ TEACHER_SETTINGS = ["INT"] + SINGLE_TEACHERS
 # Dataset-adaptive J grids: chosen so that n_train/J >= ~20-30 original
 # points per cell, ranging from tens to hundreds as stated in the manuscript.
 DATASET_J_GRIDS = {
-    "Servo":        (5, 10),
+    "Servo":        (20, 30, 40),
     "SKCM":         (5, 10, 15),
     "Abalone":      (10, 20, 30, 50),
     "Upselling":    (10, 20, 30, 50),
