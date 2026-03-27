@@ -157,7 +157,6 @@ class MixtureLinearModel:
             if classification == True:
                 if len(np.unique(y_local[k])) < 2:
                     clf.append(self.nn_model[-1][0])
-                    print("cluster:", i, "model", clf[-1])
                 else:
                     for i in self.nn_model:
                         if roc_auc_score(y_local[k], i[0].predict(X_local[k])) >= roc_score:
